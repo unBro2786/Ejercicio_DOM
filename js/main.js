@@ -53,7 +53,23 @@ encabezado1.innerHTML = "<em>Ejercicio</em> DOM";
 
 // btnMostrar.addEventListener("click", handleEvent);
 
-btnMostrar.addEventListener("click", function (event){
+
+btnMostrar.addEventListener("click", eventoClickBoton);
+function eventoClickBoton(event){
     event.preventDefault();//no hagas lo que haces por defecto
-    console.log("boton btnModificar presionado");
-});
+    
+    let element = document.createElement("li")
+    element.innerText = "Another Item";
+    element.classList.add("list-group-item");
+
+    let element2 = element.cloneNode(true);
+    let element3 = element.cloneNode(true);
+    let element4 = element.cloneNode(true);
+
+    listas.item(0).before(element);
+    listas.item(0).prepend(element2);
+    listas.item(0).append(element3);
+    listas.item(0).after(element4);
+
+}
+
