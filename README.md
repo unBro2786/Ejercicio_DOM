@@ -17,5 +17,7 @@ git push origin main
 ```
 
 > Vista prpevia del index.html
+
 ![Index](img/preview.png)
+
 Nota: este es un ejercicio (borrar este repositorio despues)
