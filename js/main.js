@@ -21,6 +21,10 @@ let otroElemento = document.querySelector("ul>li"); //El primero que encuentra
 
 let otrosElementos = document.querySelectorAll("ul>li"); //Todos los que encuentre
 
+let txtRFC = document.getElementById("txtRFC");
+let txtCURP = document.getElementById("txtCURP");
+let txtTelefono = document.getElementById("txtTelefono");
+
 console.log("otroElmento: ", otroElemento);
 
 console.log("otrosElementos: ", otrosElementos);
@@ -66,10 +70,37 @@ function eventoClickBoton(event){
     let element3 = element.cloneNode(true);
     let element4 = element.cloneNode(true);
 
-    listas.item(0).before(element);
-    listas.item(0).prepend(element2);
-    listas.item(0).append(element3);
-    listas.item(0).after(element4);
+    // listas.item(0).before(element);
+    // listas.item(0).prepend(element2);
+    // listas.item(0).append(element3);
+    // listas.item(0).after(element4);
 
+    // listas.item(1).insertAdjacentElement("afterbegin", element);
+    // listas.item(1).insertAdjacentElement("beforeend", element2);
+    
+    listas.item(1).insertAdjacentHTML("beforebegin", `<li class="list-group-item">Before begin</li>`);
+    listas.item(1).insertAdjacentHTML("afterend", `<li class="list-group-item">After End</li>`);
+    listas.item(1).insertAdjacentHTML("afterbegin", `<li class="list-group-item">After begin</li>`);
+    listas.item(1).insertAdjacentHTML("beforeend", `<li class="list-group-item">Before end</li>`);
 }
 
+/* Se ejecuta cuando termine de cargar la pagina */
+window.addEventListener("load", function(event){
+    console.log("Se terminó de cargar la pagina");
+});
+
+/* Funcion para convertir el value a mayusculas */
+function textToUpper(event) {
+    event.preventDefault();
+    event.target.value = event.target.value.trim().toUpperCase();
+}
+
+/* blur es un evento cuando se sale del campo */
+txtRFC.addEventListener("blur", textToUpper);
+/* blur es un evento cuando se sale del campo */
+txtCURP.addEventListener("blur", textToUpper);
+
+txtTelefono.addEventListener("blur", function (event) {
+    event.preventDefault();
+    txtTelefono.value = txtTelefono.value.trim().slice(0,10);
+});
